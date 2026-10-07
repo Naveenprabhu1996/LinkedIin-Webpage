@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naveen P Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap">
+<style>
+/* Layout: BMW corporate rhythm. Light nav, dark navy hero, light bands, dark CTA band, soft-grey footer. 0px corners, no shadows. */
+:root {
+  --primary: #1c69d4;
+  --primary-active: #0653b6;
+  --ink: #262626;
+  --body: #3c3c3c;
+  --muted: #6b6b6b;
+  --hairline: #e6e6e6;
+  --hairline-strong: #cccccc;
+  --canvas: #ffffff;
+  --surface-soft: #f7f7f7;
+  --surface-card: #fafafa;
+  --surface-dark: #1a2129;
+  --surface-dark-elevated: #262e38;
+  --on-dark: #ffffff;
+  --on-dark-soft: #bbbbbb;
+  --success: #22c55e;
+  --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --section: 80px;
+  --max: 1200px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--canvas); color: var(--body);
+  font-family: var(--font); font-weight: 300; font-size: 16px; line-height: 1.55;
+}
+a { color: inherit; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+h1, h2, h3, h4 { font-weight: 700; color: var(--ink); margin: 0; text-wrap: balance; letter-spacing: 0; }
+p { margin: 0; }
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: 24px; }
+.label {
+  font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  line-height: 1.3; color: var(--muted);
+}
+
+/* Nav */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: var(--canvas); border-bottom: 1px solid var(--hairline);
+}
+.nav .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); font-weight: 700; font-size: 16px; }
+.mark {
+  width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--ink);
+  display: grid; place-items: center; font-size: 12px; font-weight: 700; letter-spacing: .5px;
+}
+.nav ul { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
+.nav ul a { text-decoration: none; font-size: 14px; font-weight: 400; letter-spacing: .3px; color: var(--ink); padding-block: 22px; border-bottom: 2px solid transparent; }
+.nav ul a:hover { border-bottom-color: var(--ink); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 14px 32px; border-radius: 0;
+  font-family: var(--font); font-size: 14px; font-weight: 700; letter-spacing: .5px; line-height: 1;
+  text-decoration: none; border: 1px solid transparent; cursor: pointer;
+}
+.btn-primary { background: var(--primary); color: var(--on-dark); }
+.btn-primary:active { background: var(--primary-active); }
+.btn-ghost-dark { background: transparent; color: var(--on-dark); border-color: var(--on-dark); }
+.btn-ghost-dark:active { background: var(--surface-dark-elevated); }
+.text-link {
+  font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+}
+.text-link span { color: var(--primary); }
+
+/* Hero */
+.hero { background: var(--surface-dark); color: var(--on-dark); padding-block: var(--section); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: end; }
+.hero .label { color: var(--on-dark-soft); }
+.hero h1 { color: var(--on-dark); font-size: clamp(44px, 8vw, 88px); line-height: 1.02; margin-top: 16px; }
+.hero .pron { display: inline-block; margin-top: 12px; font-size: 14px; font-weight: 400; color: var(--on-dark-soft); }
+.hero .lead { margin-top: 24px; font-size: 20px; line-height: 1.5; color: var(--on-dark); max-width: 34ch; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+.status {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 24px;
+  font-size: 12px; font-weight: 400; letter-spacing: .5px; color: var(--on-dark-soft);
+}
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+.hero-card { background: var(--surface-dark-elevated); padding: 32px; display: grid; gap: 20px; }
+.hero-card .row { display: grid; gap: 4px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.hero-card .row:last-child { border-bottom: 0; padding-bottom: 0; }
+.hero-card .k { font-size: 12px; font-weight: 400; letter-spacing: .5px; color: var(--on-dark-soft); text-transform: uppercase; }
+.hero-card .v { font-size: 16px; font-weight: 700; color: var(--on-dark); }
+
+/* Spec strip */
+.specs { border-bottom: 1px solid var(--hairline); }
+.specs .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.spec { padding: 32px 24px; border-left: 1px solid var(--hairline); }
+.spec:first-child { border-left: 0; padding-left: 0; }
+.spec .num { font-size: 32px; font-weight: 700; color: var(--ink); line-height: 1.15; font-variant-numeric: tabular-nums; }
+.spec .num small { font-size: 18px; }
+.spec .label { margin-top: 8px; display: block; }
+
+/* Sections */
+section.band { padding-block: var(--section); }
+.band.soft { background: var(--surface-soft); }
+.sec-head { display: grid; gap: 12px; margin-bottom: 48px; }
+.sec-head h2 { font-size: clamp(32px, 4.5vw, 48px); line-height: 1.1; }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 48px; }
+.about p { font-size: 18px; line-height: 1.6; color: var(--body); max-width: 62ch; }
+.about p + p { margin-top: 16px; }
+
+/* Experience */
+.jobs { display: grid; gap: 0; border-top: 1px solid var(--hairline); }
+.job {
+  display: grid; grid-template-columns: 220px minmax(0, 1fr) auto; gap: 32px;
+  padding-block: 32px; border-bottom: 1px solid var(--hairline); align-items: start;
+}
+.job .when { font-size: 14px; font-weight: 400; color: var(--muted); font-variant-numeric: tabular-nums; }
+.job .when b { display: block; color: var(--ink); font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+.job h3 { font-size: 24px; line-height: 1.25; }
+.job .co { margin-top: 6px; font-size: 16px; color: var(--body); }
+.job .meta { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.tag {
+  display: inline-block; padding: 8px 14px; font-size: 12px; font-weight: 400; letter-spacing: .5px;
+  border: 1px solid var(--hairline-strong); color: var(--ink); white-space: nowrap;
+}
+.tag.now { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
+
+/* Skills grid (model-card pattern) */
+.skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.skill { background: var(--canvas); display: flex; flex-direction: column; }
+.skill .plate {
+  background: var(--surface-card); aspect-ratio: 16 / 10; display: grid; place-items: center;
+  border-bottom: 1px solid var(--hairline);
+}
+.skill .glyph {
+  width: 72px; height: 72px; display: grid; place-items: center;
+  font-size: 26px; font-weight: 700; color: var(--on-dark); background: var(--surface-dark);
+}
+.skill .body { padding: 24px; display: grid; gap: 6px; flex: 1; align-content: start; }
+.skill h3 { font-size: 18px; line-height: 1.4; }
+.skill p { font-size: 14px; color: var(--muted); }
+.badge {
+  margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; justify-self: start;
+  font-size: 12px; font-weight: 700; letter-spacing: .5px; color: var(--primary);
+}
+.badge::before { content: ""; width: 8px; height: 8px; background: var(--primary); }
+
+/* Education */
+.edu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.edu-card { border: 1px solid var(--hairline); padding: 32px; display: grid; gap: 8px; align-content: start; }
+.edu-card .yrs { font-size: 14px; font-weight: 400; color: var(--muted); font-variant-numeric: tabular-nums; }
+.edu-card h3 { font-size: 20px; line-height: 1.3; }
+.edu-card .deg { font-size: 16px; color: var(--body); }
+.edu-card .grade { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--hairline); display: flex; justify-content: space-between; gap: 16px; }
+.edu-card .grade b { font-size: 24px; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* CTA */
+.cta { background: var(--surface-dark); color: var(--on-dark); padding-block: var(--section); }
+.cta .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; }
+.cta .label { color: var(--on-dark-soft); }
+.cta h2 { color: var(--on-dark); font-size: clamp(28px, 4vw, 40px); line-height: 1.15; margin-top: 12px; max-width: 22ch; }
+.cta p { margin-top: 16px; color: var(--on-dark-soft); max-width: 52ch; }
+.url { font-size: 14px; font-weight: 400; color: var(--on-dark-soft); margin-top: 12px; user-select: all; }
+
+/* Footer */
+footer { background: var(--surface-soft); padding-block: 64px; font-size: 14px; color: var(--body); }
+footer .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+footer h4 { font-size: 16px; margin-bottom: 12px; }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+footer a { text-decoration: none; color: var(--muted); }
+footer a:hover { color: var(--ink); }
+.copy { grid-column: 1 / -1; padding-top: 32px; border-top: 1px solid var(--hairline); color: var(--muted); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .job { grid-template-columns: 180px minmax(0, 1fr); }
+  .job .tag { grid-column: 2; justify-self: start; }
+}
+@media (max-width: 768px) {
+  :root { --section: 56px; }
+  .wrap { padding-inline: 16px; }
+  .nav ul { display: none; }
+  .hero .wrap, .about, .cta .wrap { grid-template-columns: minmax(0, 1fr); }
+  .specs .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spec { padding: 24px 16px; }
+  .spec:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .spec:nth-child(n+3) { border-top: 1px solid var(--hairline); }
+  .job { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .job .tag { grid-column: 1; }
+  .skills, .edu { grid-template-columns: minmax(0, 1fr); }
+  footer .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark">NP</span>Naveen P</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="label">UX / UI Designer · Chennai, India</span>
+        <h1>Naveen P</h1>
+        <span class="pron">He/Him</span>
+        <p class="lead">UX UI Designer at Orange Retail Finance, with more than nine years in design.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/naveenspn96/" target="_blank" rel="noopener">View LinkedIn profile</a>
+          <a class="btn btn-ghost-dark" href="#experience">See experience</a>
+        </div>
+        <div class="status">Actively seeking full-time opportunities</div>
+      </div>
+      <aside class="hero-card" aria-label="Quick facts">
+        <div class="row"><span class="k">Current role</span><span class="v">UI-UX Designer, Orange Retail Finance India</span></div>
+        <div class="row"><span class="k">Previous</span><span class="v">Senior Graphic Designer, Bright River</span></div>
+        <div class="row"><span class="k">Education</span><span class="v">BCA, Kongu Arts and Science College, Erode</span></div>
+        <div class="row"><span class="k">Based in</span><span class="v">Chennai, Tamil Nadu, India</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="specs">
+    <div class="wrap">
+      <div class="spec"><div class="num">9<small>+ yrs</small></div><span class="label">In design</span></div>
+      <div class="spec"><div class="num">4<small>+ yrs</small></div><span class="label">UI / UX design</span></div>
+      <div class="spec"><div class="num">5.5<small> yrs</small></div><span class="label">Graphic design</span></div>
+      <div class="spec"><div class="num">3</div><span class="label">Skill assessments passed</span></div>
+    </div>
+  </div>
+
+  <section class="band" id="about">
+    <div class="wrap about">
+      <div class="sec-head">
+        <span class="label">About</span>
+        <h2>From graphic design to product design</h2>
+      </div>
+      <div>
+        <p>I'm a UX UI Designer based in Chennai. Since August 2022 I've designed user interfaces at Orange Retail Finance India Private Limited.</p>
+        <p>Before that, I spent five and a half years as a Senior Graphic Designer at Bright River. That work gave me a strong base in layout, type and visual craft. Today I use Figma and Adobe XD for product work, and the Adobe Creative Suite for visuals and motion.</p>
+        <p>I'm now looking for a full-time UX/UI role.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band soft" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Experience</span>
+        <h2>Where I've worked</h2>
+      </div>
+      <div class="jobs">
+        <article class="job">
+          <div class="when"><b>Aug 2022 – Present</b>4 yrs 3 mos</div>
+          <div>
+            <h3>UI-UX Designer</h3>
+            <p class="co">Orange Retail Finance India Private Limited · Full-time</p>
+            <p class="meta">Chennai, Tamil Nadu, India</p>
+          </div>
+          <span class="tag now">Current</span>
+        </article>
+        <article class="job">
+          <div class="when"><b>Feb 2017 – Jul 2022</b>5 yrs 6 mos</div>
+          <div>
+            <h3>Senior Graphic Designer</h3>
+            <p class="co">Bright River Ind Pvt Limited · Full-time</p>
+            <p class="meta">Amnchikarai</p>
+          </div>
+          <span class="tag">Full-time</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Skills · 7 tools</span>
+        <h2>Tools I work with</h2>
+      </div>
+      <div class="skills">
+        <article class="skill"><div class="plate"><span class="glyph">Fg</span></div><div class="body"><h3>Figma</h3><p>UI design and prototyping</p></div></article>
+        <article class="skill"><div class="plate"><span class="glyph">Xd</span></div><div class="body"><h3>Adobe XD</h3><p>UI design and prototyping</p><span class="badge">LinkedIn assessment passed</span></div></article>
+        <article class="skill"><div class="plate"><span class="glyph">Ps</span></div><div class="body"><h3>Adobe Photoshop</h3><p>Image editing and visuals</p><span class="badge">LinkedIn assessment passed</span></div></article>
+        <article class="skill"><div class="plate"><span class="glyph">Ai</span></div><div class="body"><h3>Adobe Illustrator</h3><p>Vector graphics and icons</p><span class="badge">LinkedIn assessment passed</span></div></article>
+        <article class="skill"><div class="plate"><span class="glyph">Ae</span></div><div class="body"><h3>Adobe After Effects</h3><p>Motion and animation</p></div></article>
+        <article class="skill"><div class="plate"><span class="glyph">Id</span></div><div class="body"><h3>Adobe InDesign</h3><p>Print and editorial layout</p></div></article>
+        <article class="skill"><div class="plate"><span class="glyph">Cc</span></div><div class="body"><h3>Adobe Creative Suite</h3><p>The full Adobe toolkit</p></div></article>
+        <article class="skill"><div class="plate"><span class="glyph">+</span></div><div class="body"><h3>Always learning</h3><p>Open to new tools and workflows</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band soft" id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Education</span>
+        <h2>Study</h2>
+      </div>
+      <div class="edu">
+        <article class="edu-card">
+          <span class="yrs">2013 – 2016</span>
+          <h3>Kongu Arts and Science College, Erode</h3>
+          <p class="deg">Bachelor of Computer Application</p>
+          <div class="grade"><span class="label">Grade</span><b>60%</b></div>
+        </article>
+        <article class="edu-card">
+          <span class="yrs">Feb 2017 – Present</span>
+          <h3>Kongu Arts and Science College</h3>
+          <p class="deg">Bachelor of Computer Application, Graphic Design</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <div>
+        <span class="label">Open to work</span>
+        <h2>Looking for a full-time UX/UI designer?</h2>
+        <p>Let's talk. Send me a message on LinkedIn.</p>
+        <p class="url">linkedin.com/in/naveenspn96</p>
+      </div>
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/naveenspn96/" target="_blank" rel="noopener">Message on LinkedIn</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><h4>Naveen P</h4><ul><li>UX UI Designer</li><li>Chennai, India</li></ul></div>
+    <div><h4>Profile</h4><ul><li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li></ul></div>
+    <div><h4>Work</h4><ul><li><a href="#skills">Skills</a></li><li><a href="#education">Education</a></li></ul></div>
+    <div><h4>Connect</h4><ul><li><a href="https://www.linkedin.com/in/naveenspn96/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+    <p class="copy">© 2026 Naveen P</p>
+  </div>
+</footer>
+</body>
+</html>
